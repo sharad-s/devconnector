@@ -1,8 +1,10 @@
 import React from "react";
 import propTypes from "prop-types";
-import { withRouter } from "react-router-dom";
 import classnames from "classnames";
+
+// Redux
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { registerUser } from "../../actions/authActions";
 
 class Register extends React.Component {
@@ -18,6 +20,12 @@ class Register extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,8 +54,6 @@ class Register extends React.Component {
 
   render() {
     const { errors } = this.state;
-
-    const { user } = this.props.auth;
 
     return (
       <div className="register">
