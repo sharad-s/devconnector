@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
+
 // CSS
 import "./App.css";
 
@@ -18,8 +19,8 @@ import Register from "./components/auth/Register";
 class App extends Component {
   render() {
     return (
-      <Provider>
-        <BrowserRouter store={store}>
+      <Provider store={store}>
+        <BrowserRouter>
           <div className="App">
             <Navbar />
             <Route exact path="/" component={Landing} />
