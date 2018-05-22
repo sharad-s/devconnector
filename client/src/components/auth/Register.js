@@ -1,6 +1,5 @@
 import React from "react";
 import propTypes from "prop-types";
-import classnames from "classnames";
 
 // Components
 import TextFieldGroup from "../common/TextFieldGroup";

@@ -1,7 +1,6 @@
 import React from "react";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
-import classnames from "classnames";
 import { loginUser } from "../../actions/authActions";
 
 // Components
