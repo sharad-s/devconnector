@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 
