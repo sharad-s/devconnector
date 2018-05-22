@@ -29,6 +29,7 @@ class Login extends React.Component {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
+    // Update Errors on Login Form
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
