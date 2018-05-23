@@ -17,7 +17,7 @@ const InputGroup = ({
         <span className="input-group-text">
           <i className={icon} />
         </span>
-        <textarea
+        <input
           className={classnames("form-control form-control-lg", {
             "is-invalid": error
           })}
