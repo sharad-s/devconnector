@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 import TextFieldGroup from "../common/TextFieldGroup";
+import TextAreaFieldGroup from "../common/TextFieldGroup";
+import SelectListGroup from "../common/TextFieldGroup";
+import InputGroup from "../common/TextFieldGroup";
 
 class CreateProfile extends React.Component {
   constructor() {
