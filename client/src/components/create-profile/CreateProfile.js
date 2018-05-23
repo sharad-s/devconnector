@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Redirect, Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import SelectListGroup from "../common/SelectListGroup";
 import InputGroup from "../common/InputGroup";
+import { createProfile } from "../../actions/profileActions";
 
 class CreateProfile extends React.Component {
   constructor() {
@@ -35,11 +36,36 @@ class CreateProfile extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     console.log("submit");
+
+    const profileData = {
+      handle: this.state.handle,
+      company: this.state.company,
+      website: this.state.website,
+      location: this.state.location,
+      status: this.state.status,
+      skills: this.state.skills,
+      githubusername: this.state.githubusername,
+      bio: this.state.bio,
+      twitter: this.state.twitter,
+      facebook: this.state.facebook,
+      linkedin: this.state.linkedin,
+      youtube: this.state.youtube,
+      instagram: this.state.instagram
+    };
+
+    this.props.createProfile(profileData, this.props.history);
   }
 
   onChange(e) {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Update Errors on Login Form
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   render() {
@@ -155,14 +181,6 @@ class CreateProfile extends React.Component {
                   info="Your website or a company one"
                 />
                 <TextFieldGroup
-                  placeholder="Website"
-                  name="website"
-                  value={this.state.website}
-                  onChange={this.onChange}
-                  error={errors.website}
-                  info="Your website or a company one"
-                />
-                <TextFieldGroup
                   placeholder="Location"
                   name="location"
                   value={this.state.location}
@@ -171,7 +189,7 @@ class CreateProfile extends React.Component {
                   info="City & state suggested (eg. Boston, MA)"
                 />
                 <TextFieldGroup
-                  placeholder="Skills"
+                  placeholder="* Skills"
                   name="skills"
                   value={this.state.skills}
                   onChange={this.onChange}
@@ -234,4 +252,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(mapStateToProps, { createProfile })(
+  withRouter(CreateProfile)
+);
