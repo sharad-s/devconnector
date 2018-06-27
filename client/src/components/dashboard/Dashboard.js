@@ -6,7 +6,7 @@ import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
 import { RingLoader, HashLoader } from "react-spinners";
 import ProfileActions from "./ProfileActions";
 import Experience from "./Experience";
-// import Education from "./Education";
+import Education from "./Education";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -35,6 +35,7 @@ class Dashboard extends Component {
             </p>
             <ProfileActions />
             <Experience experience={profile.experience} />
+            <Education education={profile.education} />
 
             <div style={{ marginBottom: "60px" }} />
             <button
