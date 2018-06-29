@@ -44,7 +44,7 @@ class Experience extends React.Component {
               <th />
             </tr>
           </thead>
-          {experience}
+          <tbody>{experience}</tbody>
         </table>
       </div>
     );

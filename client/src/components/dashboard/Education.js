@@ -44,7 +44,7 @@ class Education extends React.Component {
               <th />
             </tr>
           </thead>
-          {education}
+          <tbody>{education}</tbody>
         </table>
       </div>
     );
