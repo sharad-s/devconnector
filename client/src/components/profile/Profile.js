@@ -20,15 +20,20 @@ class Profile extends React.Component {
     }
   }
 
+  // If no profile is found, redirect to 404
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profile === null && this.props.profile.loading) {
+      this.props.history.push("/not-found");
+    }
+  }
+
   render() {
     const { profile, loading } = this.props.profile;
     let profileContent;
-    console.log(profile);
 
     if (profile === null || loading) {
       profileContent = <HashLoader />;
     } else {
-      console.log(profile);
       profileContent = (
         <div>
           <div className="row">
@@ -41,8 +46,13 @@ class Profile extends React.Component {
           </div>
           <ProfileHeader profile={profile} />
           <ProfileAbout profile={profile} />
-          <ProfileCreds profile={profile} />
-          <ProfileGithub profile={profile} />
+          <ProfileCreds
+            education={profile.education}
+            experience={profile.experience}
+          />
+          {profile.githubusername ? (
+            <ProfileGithub username={profile.githubusername} />
+          ) : null}
         </div>
       );
     }
