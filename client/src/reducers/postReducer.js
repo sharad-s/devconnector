@@ -26,6 +26,12 @@ export default function(state = initialState, action) {
         posts: action.payload,
         loading: false
       };
+    case DELETE_POST:
+      // Filter deleted post out of state.posts
+      return {
+        ...state,
+        posts: state.posts.filter(post => post._id !== action.payload)
+      };
     default:
       return state;
   }
