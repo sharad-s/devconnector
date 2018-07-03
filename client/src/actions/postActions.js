@@ -89,13 +89,6 @@ export const deletePost = id => dispatch => {
     );
 };
 
-// Set Loading State
-export const setPostLoading = () => {
-  return {
-    type: POST_LOADING
-  };
-};
-
 // Add Like to Post
 export const addLike = id => dispatch => {
   // Like Post
@@ -172,5 +165,12 @@ export const deleteComment = (postId, commentId) => dispatch => {
 export const clearErrors = () => {
   return {
     type: CLEAR_ERRORS
+  };
+};
+
+// Set Loading State
+export const setPostLoading = () => {
+  return {
+    type: POST_LOADING
   };
 };

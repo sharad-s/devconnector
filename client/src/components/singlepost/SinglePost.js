@@ -13,6 +13,13 @@ class Post extends Component {
     this.props.getPost(this.props.match.params.id);
   }
 
+  // If no post is found, redirect to 404
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.post.post === null && this.props.post.loading) {
+      this.props.history.push("/not-found");
+    }
+  }
+
   render() {
     const { post, loading } = this.props.post;
     let postContent;
