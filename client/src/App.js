@@ -35,7 +35,7 @@ import AddEducation from "./components/add-credentials/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
-import SinglePost from "./components/singlepost/SinglePost";
+import Post from "./components/singlepost/SinglePost";
 import NotFound from "./components/not-found/NotFound";
 
 // Check for token
@@ -106,7 +106,7 @@ class App extends Component {
                 />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/post/:id" component={SinglePost} />
+                <PrivateRoute exact path="/post/:id" component={Post} />
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/feed" component={Posts} />

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import isEmpty from "../../validation/isEmpty";
 
 // redux
 import { connect } from "react-redux";
@@ -19,9 +20,10 @@ class Posts extends React.Component {
   render() {
     const { posts, loading } = this.props.post;
     let postContent;
+    console.log(posts);
 
     // Render the Post Feed
-    if (posts === null || loading) {
+    if (posts === null || loading || isEmpty(posts)) {
       postContent = <HashLoader />;
     } else {
       postContent = <PostFeed posts={posts} />;

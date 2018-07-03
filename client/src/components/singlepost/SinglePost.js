@@ -14,18 +14,19 @@ class SinglePost extends Component {
     this.props.getPost(this.props.match.params.id);
   }
 
+  // <PostItem post={post} showActions={false} />
+  // <CommentForm postId={post._id} />
+
   render() {
     const { post, loading } = this.props.post;
     const { errors } = this.props;
     let postContent;
 
-    if (post === null || loading) {
+    if (post === null || loading || Object.keys(post).length === 0) {
       postContent = <HashLoader />;
     } else {
       postContent = (
         <div>
-          <PostItem post={post} showActions={false} />
-          <CommentForm postId={post._id} />
           <CommentFeed postId={post._id} comments={post.comments} />
         </div>
       );
