@@ -1,15 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CommentItem from "./CommentItem";
 
 class CommentFeed extends React.Component {
   render() {
-    let { comments } = this.props;
+    let { comments, postId } = this.props;
 
-    return (
-      <div>
-        <h1>CommentFeed</h1>
-      </div>
-    );
+    return comments.map(comment => (
+      <CommentItem key={comment._id} comment={comment} postId={postId} />
+    ));
   }
 }
 
